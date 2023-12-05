@@ -170,7 +170,7 @@ static void GetUARTLock(void)
 	/*定义消息验证值，初始默认为pdPASS*/
 	BaseType_t xReturn = pdPASS;
 	int val = 1;
-	xQueueReceive(Test_Queue_Handle, &val, portMAX_DELAY);
+	xReturn = xQueueReceive(Test_Queue_Handle, &val, portMAX_DELAY);
 	if(pdPASS == xReturn)
 	{
 		printf("队列释放成功\r\n");
@@ -182,7 +182,7 @@ static void PutUARTLock(void)
 	/*定义消息验证值，初始默认为pdPASS*/
 	BaseType_t xReturn = pdPASS;
 	int val = 0;
-	xQueueSend(Test_Queue_Handle, &val, portMAX_DELAY);
+	xReturn = xQueueSend(Test_Queue_Handle, &val, portMAX_DELAY);
 	if(pdPASS == xReturn)
 	{
 		printf("队列重新获取\r\n");
